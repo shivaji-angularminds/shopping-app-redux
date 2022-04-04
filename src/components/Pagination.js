@@ -1,28 +1,41 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import {paginationChange,setProduct} from "../action"
 
 
-const Pagination = ({  onPaginationChange  }) => {
+const Pagination = () => {
+  const [pagination, setPagination] = useState(5);
+  const dispatch=useDispatch()
+
     const state = useSelector((state) => state);
-    const total=state.setProduct.length
-    console.log(total)
-     let showPerPage=5
+    const total=state.setProduct.rawData.length
+ 
+     let showPerPage=state.itemsPerPage
 
   const [counter, setCounter] = useState(1);
-  const [numberOfButtons, setNumberOfButoons] = useState(
+  const [numberOfButtons, setNumberOfButtons] = useState(
     Math.ceil(total / showPerPage)
   );
 
-  useEffect(()=>{
-      setNumberOfButoons(Math.ceil(total / showPerPage))
-  },[total])
 
-  console.log(numberOfButtons)
+  // const onPaginationChange = (start, end) => {
+  //   setPagination({ start: start, end: end });
+  // };
+
+
+  useEffect(()=>{
+      setNumberOfButtons(Math.ceil(total / showPerPage))
+  },[total,showPerPage])
+
 
   useEffect(() => {
     const value = showPerPage * counter;
-    onPaginationChange(value - showPerPage, value);
-  }, [counter]);
+    
+    dispatch(setProduct("filter",{start:value - showPerPage, end:value}));
+  }, [counter,showPerPage]);
+
+  
+
 
   const onButtonClick = (type) => {
     if (type === "prev") {
@@ -55,23 +68,23 @@ const Pagination = ({  onPaginationChange  }) => {
 
           {new Array(numberOfButtons).fill("").map((el, index) => (
             <li class={`page-item ${index + 1 === counter ? "active" : null}`}>
-              <a
+              <button
                 class="page-link"
-                href="!#"
+              
                 onClick={() => setCounter(index + 1)}
               >
                 {index + 1}
-              </a>
+              </button>
             </li>
           ))}
           <li class="page-item">
-            <a
+            <button
               class="page-link"
-              href="!#"
+             
               onClick={() => onButtonClick("next")}
             >
               Next
-            </a>
+            </button>
           </li>
         </ul>
       </nav>

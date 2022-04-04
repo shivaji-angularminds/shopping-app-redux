@@ -1,6 +1,8 @@
 import React from 'react'
+import {useNavigate}  from "react-router-dom"
 
 function OrderPlaced() {
+    let navigate=useNavigate()
   return (
     <div>
         <div class="container">
@@ -20,11 +22,13 @@ function OrderPlaced() {
                         <h1 class="text-success">
                             <i class="fa fa-check-circle fa-2x"></i>
                         </h1>
-                        <h2 style="line-height: 2;">Thank you for your order!</h2>
+                        <h2 style={{lineHeight: "2"}}>Thank you for your order!</h2>
                         <br/>
-                        <a href="index.html" class="btn btn-primary">
+                        <button onClick={()=>{
+                            navigate("/home")
+                        }} class="btn btn-primary">
                             <i class="fa fa-angle-double-left"></i> Continue Shopping
-                        </a>
+                        </button>
                     </div>
                 </div>
             </div>
