@@ -42,11 +42,11 @@ console.log(userdata)
   function renderProduct() {
     return state.map((prev) => {
       return (
-        <tr>
+        <tr key={prev._id} >
           <td>{prev.name} </td>
           <td>{prev.qty}</td>
           <td>
-            <i class="fa fa-inr"></i>
+            <i className="fa fa-inr"></i>
             {prev.price}
           </td>
         </tr>
@@ -56,23 +56,23 @@ console.log(userdata)
 
   console.log(state);
   return (
-    <div class="container">
-      <div class="row">
+    <div className="container">
+      <div className="row">
         <h1>
           <a href="/product">My Ecommerce Site</a>
 
-          <span class="pull-right">
+          <span className="pull-right">
             <a href="cart.html">Cart ({state.length})</a>
           </span>
         </h1>
         <hr />
-        <div class="col-md-12">
-          <div class="panel panel-default">
-            <div class="panel-heading">Place Order</div>
-            <div class="panel-body">
-              <form class="form-horizontal" role="form">
-                <table class="table table-striped">
-                  <thead class="table-head">
+        <div className="col-md-12">
+          <div className="panel panel-default">
+            <div className="panel-heading">Place Order</div>
+            <div className="panel-body">
+              <form className="form-horizontal" role="form">
+                <table className="table table-striped">
+                  <thead className="table-head">
                     <tr>
                       <td>Product Name</td>
                       <td> Quntity</td>
@@ -94,7 +94,7 @@ console.log(userdata)
                       </td>
                       <td>
                         <strong>
-                          <i class="fa fa-inr"></i>
+                          <i className="fa fa-inr"></i>
                           {total.totalCost}{" "}
                         </strong>
                       </td>
@@ -104,18 +104,18 @@ console.log(userdata)
                 <br />
 
                 <br />
-                <div class="form-group">
-                  <label for="inputName3" class="col-sm-2 control-label">
+                <div className="form-group">
+                  <label for="inputName3" className="col-sm-2 control-label">
                     Enter Order Details
                   </label>
                 </div>
-                <div class="form-group">
-                  <label for="inputName3" class="col-sm-2 control-label">
+                <div className="form-group">
+                  <label for="inputName3" className="col-sm-2 control-label">
                     Name
                   </label>
-                  <div class="col-sm-6">
+                  <div className="col-sm-6">
                     <input
-                      class="form-control"
+                      className="form-control"
                       id="inputName3"
                       placeholder="Name"
                       name="personName"
@@ -124,13 +124,13 @@ console.log(userdata)
                     />
                   </div>
                 </div>
-                <div class="form-group">
-                  <label for="inputEmail3" class="col-sm-2 control-label">
+                <div className="form-group">
+                  <label for="inputEmail3" className="col-sm-2 control-label">
                     Address
                   </label>
-                  <div class="col-sm-6">
+                  <div className="col-sm-6">
                     <textarea
-                      class="form-control"
+                      className="form-control"
                       id="inputEmail3"
                       placeholder="Deliver Address"
                       name="deliveryAddress"
@@ -139,12 +139,12 @@ console.log(userdata)
                     ></textarea>
                   </div>
                 </div>
-                <div class="form-group">
-                  <label class="col-sm-2 control-label"></label>
-                  <div class="col-sm-6">
+                <div className="form-group">
+                  <label className="col-sm-2 control-label"></label>
+                  <div className="col-sm-6">
                     <button onClick={()=>{
                     navigate("/orderplace")
-                    }} class="btn btn-warning" disabled={userdata.personName && userdata.deliveryAddress ? false:true} >
+                    }} className="btn btn-warning" disabled={userdata.personName && userdata.deliveryAddress ? false:true} >
                       Confirm Order
                     </button>
                   </div>

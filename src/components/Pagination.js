@@ -55,10 +55,10 @@ const Pagination = () => {
   return (
     <div className="d-flex justify-content-center">
       <nav aria-label="Page navigation example">
-        <ul class="pagination">
-          <li class="page-item">
+        <ul className="pagination">
+          <li className="page-item">
             <a
-              class="page-link"
+              className="page-link"
               href="!#"
               onClick={() => onButtonClick("prev")}
             >
@@ -67,9 +67,9 @@ const Pagination = () => {
           </li>
 
           {new Array(numberOfButtons).fill("").map((el, index) => (
-            <li class={`page-item ${index + 1 === counter ? "active" : null}`}>
+            <li className={`page-item ${index + 1 === counter ? "active" : null}`}>
               <button
-                class="page-link"
+                className="page-link"
               
                 onClick={() => setCounter(index + 1)}
               >
@@ -77,9 +77,9 @@ const Pagination = () => {
               </button>
             </li>
           ))}
-          <li class="page-item">
+          <li className="page-item">
             <button
-              class="page-link"
+              className="page-link"
              
               onClick={() => onButtonClick("next")}
             >

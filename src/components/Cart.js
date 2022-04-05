@@ -27,30 +27,30 @@ console.log(total)
         return(
             state.addProduct.map((prev,index)=>{
                 return(
-                    <form>
-                    <div class="row">
-                        <div class="col-md-3"> <img src="images/5.jpeg" width="100px" height="200px"/></div>
-                        <div class="col-md-3"> {prev.name}
-                            <br /><i class="fa fa-inr"></i>{prev.price}
+                    <form key={prev._id} >
+                    <div className="row"  >
+                        <div className="col-md-3"> <img src="images/5.jpeg" width="100px" height="200px"/></div>
+                        <div className="col-md-3"> {prev.name}
+                            <br /><i className="fa fa-inr"></i>{prev.price}
                         </div>
-                        <div class="col-md-3"> quantity{prev.qty}
+                        <div className="col-md-3"> quantity{prev.qty}
                             <br />
                             <button onClick={(e)=>{                                e.preventDefault()
 
                                                                 dispatch(addProduct("decreaseQty",index))
 
-                            }} class='qtyminus' ng-disabled="qty<=0">-</button>
-                            <input ng-model="qty" type='text' name='quantity' class='qty' size="5px"
+                            }} className='qtyminus' ng-disabled="qty<=0">-</button>
+                            <input ng-model="qty" type='text' name='quantity' className='qty' size="5px"
                                 value={prev.qty} />
                             <button onClick={(e)=>{
                                 e.preventDefault()
                                 dispatch(addProduct("increaseQty",index))
                             }}>+</button>
                         </div>
-                        <div class="col-md-3"> <button  onClick={(e)=>{
+                        <div className="col-md-3"> <button  onClick={(e)=>{
                             e.preventDefault()
                             dispatch(addProduct("removeItem",prev))
-                        }} class="btn btn-warning">remove</button></div>
+                        }} className="btn btn-warning">remove</button></div>
                     </div>
                 </form>
                 )
@@ -62,40 +62,40 @@ console.log(total)
 
   return (
     <div>
-         <div class="container">
-        <div class="row">
+         <div className="container">
+        <div className="row">
             <h1>
                 <a href="/product">My Ecommerce Site</a>
                 
-                <span class="pull-right">
+                <span className="pull-right">
                     <a href="cart.html">Cart ({state.addProduct.length})</a>
                 </span>
             </h1>
             <hr/>
-            <div class="col-md-12">
-                <div class="panel panel-default">
-                    <div class="panel-heading">MY CART ({state.addProduct.length})
+            <div className="col-md-12">
+                <div className="panel panel-default">
+                    <div className="panel-heading">MY CART ({state.addProduct.length})
                     </div>
-                    <div class="panel-body">
+                    <div className="panel-body">
                        {
                            state.addProduct.length>0 ? renderProducts():<h1>Your Cart is Empty</h1>
                        }
                         <hr/>
-                        <div class="row">
-                            <div class="col-md-9">
-                                <label class="pull-right">Amount Payable
+                        <div className="row">
+                            <div className="col-md-9">
+                                <label className="pull-right">Amount Payable
                                 </label>
                             </div>
-                            <div class="col-md-3 ">
+                            <div className="col-md-3 ">
                             {total}
                             </div>
                         </div>
                     </div>
-                    <div class="panel-footer">
-                        <Link to="/home" class="btn btn-success">Continue Shopping</Link>
+                    <div className="panel-footer">
+                        <Link to="/home" className="btn btn-success">Continue Shopping</Link>
                         <button onClick={()=>{
                             navigate(`/placedorder`)
-                        }}  class="pull-right btn btn-danger " disabled={total>=500 ? false:true}  >Place Order</button>
+                        }}  className="pull-right btn btn-danger " disabled={total>=500 ? false:true}  >Place Order</button>
                     </div>
                 </div>
             </div>

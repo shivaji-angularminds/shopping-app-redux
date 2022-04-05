@@ -45,12 +45,12 @@ function Home() {
     const array4 = array.map((prev) => {
       return (
         <div>
-        <div class="row">
+        <div className="row"  >
           {prev.map((prev1, index) => {
             return (
-              <div class="col-xs-3">
+              <div key={prev._id} className="col-xs-3">
                 <div
-                  class={bgArray[index]}
+                  className={bgArray[index]}
                   style={{ padding: "20px", borderRadius: "5px" }}
                 >
                   <img
@@ -61,11 +61,11 @@ function Home() {
                   <br></br>
                   <p>{prev1.name}</p>
                   <p>
-                    <i class="fa fa-inr"></i>{prev1.price}
+                    <i className="fa fa-inr"></i>{prev1.price}
                   </p>
 
                   <button
-                    class="btn btn-warning"
+                    className="btn btn-warning"
                     onClick={() => {
                       dispatch(addProduct("addProduct", prev1));
                     }}
@@ -92,18 +92,18 @@ function Home() {
 
   return (
     <div>
-      <div class="container">
+      <div className="container">
         <h1>
           <a href="/product">My Ecommerce Site</a>
-          <span class="pull-right">
+          <span className="pull-right">
             <Link to="/cart">Cart ({state.addProduct.length})</Link>
           </span>
         </h1>
         <hr />
-        <div class="row">
-          <div class="col-sm-12">
+        <div className="row">
+          <div className="col-sm-12">
             <div style={{ margin: "25px 0" }}>
-              <label for="" class="control-label">
+              <label for="" className="control-label">
                 Sort by:
               </label>
               <select name="" id="" onChange={(event)=>{
@@ -120,13 +120,13 @@ function Home() {
 
         {state.setProduct.rawData.length > 1 && renderProducts()}
 
-        <div class="row">
-          <div class="col-sm-8">
+        <div className="row">
+          <div className="col-sm-8">
             <Pagination />
           </div>
-          <div class="col-sm-4 text-right">
+          <div className="col-sm-4 text-right">
             <div style={{ margin: "25px 0" }}>
-              <label for="" class="control-label">
+              <label for="" className="control-label">
                 Items Per Page:
               </label>
               <select name="" id=""  onClick={(event)=>{
